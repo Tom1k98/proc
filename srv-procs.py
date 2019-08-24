@@ -10,7 +10,7 @@ def delfiles():
 			os.remove('/opt/files/{}'.format(files))
 
 def getfiles():
-    filename = '/opt/procs/procs-{}''.format(now)
+    filename = '/opt/procs/procs-{}'.format(now)
     fw = open(filename, 'w')
     for f in os.listdir('/opt/files'):
         ff = '/opt/files/{}'.format(f)
