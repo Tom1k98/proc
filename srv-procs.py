@@ -21,8 +21,9 @@ def getprocs():
 def printproc():
 	filename = '/opt/procs/procs-{}'.format(now)
 	file = open(filename, 'r')
-	for lines in file:
-		print(lines)
+	for tmp in file:
+		fin = tmp.split('-')
+		print(fin)
 
 def main():
 	getprocs()
