@@ -1,6 +1,9 @@
 import os
 from datetime import datetime
 
+ansap = 0
+metap = 0
+animatorp = 0
 tmp = datetime.now()
 now = tmp.strftime("%m%d%Y-%H%M")
 
@@ -18,17 +21,32 @@ def getprocs():
 		for lines in fr:
 			fw.write(lines)
 
-def printproc():
+def countprocs():
 	filename = '/opt/procs/procs-{}'.format(now)
 	file = open(filename, 'r')
+	global ansap
+	global metap
+	global animatorp
 	for tmp in file:
 		fin = tmp.split('-')
-		print(fin)
+		if 'ansa' in fin[0]:
+			ansap += 1
+		if 'meta' in fin[0]:
+			metap += 1
+		if 'animator' in fin[0]:
+			animatorp += 1
+
+def printprocs():
+	print('bezici sluzby na fem stanicich:')
+	print('ansa - {}'.format(ansap))
+	print('meta - {}'.format(metap))
+	print('animator - {}'.format(animatorp))
 
 def main():
 	getprocs()
-	printproc()
-	delfiles()
+	countprocs()
+	printprocs()
+	#delfiles()
 
 if __name__ == "__main__":
 	main()
