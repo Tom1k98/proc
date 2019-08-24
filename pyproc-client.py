@@ -1,12 +1,19 @@
 import psutil
 import os
 import socket
+import sys
 from datetime import datetime
 
 host = socket.gethostname()
 running = []
 tmp = datetime.now()
 now = tmp.strftime("%m%d%Y-%H%M")
+
+def gethelp():
+	if sys.argv[1] in '-h', '--help':
+		print('script which collect specified processses and save them to file\n
+		There should be script on server where files are collected')
+		sys.exit()
 
 #fce ktera odstrani stare soubory
 def delfiles():
@@ -48,6 +55,7 @@ def selectproc():
 		file.write('\n')
 
 def main():
+	gethelp()
 	delfiles()
 	genproc()
 	selectproc()
