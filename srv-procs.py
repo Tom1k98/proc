@@ -9,7 +9,7 @@ def delfiles():
 		for files in os.listdir('/opt/files'):
 			os.remove('/opt/files/{}'.format(files))
 
-def getfiles():
+def getprocs():
     filename = '/opt/procs/procs-{}'.format(now)
     fw = open(filename, 'w')
     for f in os.listdir('/opt/files'):
@@ -18,8 +18,11 @@ def getfiles():
         for lines in fr:
             fw.write(lines)
 
+	for lines in fw:
+		print(lines)
+
 def main():
-    getfiles()
+    getprocs()
     delfiles()
 
 if __name__ == "__main__":
