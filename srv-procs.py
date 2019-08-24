@@ -7,11 +7,13 @@ animatorp = 0
 tmp = datetime.now()
 now = tmp.strftime("%m%d%Y-%H%M")
 
+#fce ktera odstrani stare soubory s procesy ze stanic
 def delfiles():
 	if len(os.listdir('/opt/files')) > 0:
 		for files in os.listdir('/opt/files'):
 			os.remove('/opt/files/{}'.format(files))
 
+#fce ktera vytahne procesy ze vsech souboru a zapise je do jednoho
 def getprocs():
 	filename = '/opt/procs/procs-{}'.format(now)
 	fw = open(filename, 'w')
@@ -21,6 +23,7 @@ def getprocs():
 		for lines in fr:
 			fw.write(lines)
 
+#fce ktera spocita pocet procesu vuci jednotlivym aplikacim
 def countprocs():
 	filename = '/opt/procs/procs-{}'.format(now)
 	file = open(filename, 'r')
@@ -36,6 +39,7 @@ def countprocs():
 		if 'animator' in fin[0]:
 			animatorp += 1
 
+#vypise pocet procesu k jednotlivym aplikacim
 def printprocs():
 	print('bezici sluzby na fem stanicich:')
 	print('ansa - {}'.format(ansap))

@@ -8,24 +8,26 @@ running = []
 tmp = datetime.now()
 now = tmp.strftime("%m%d%Y-%H%M")
 
-def checkfiles():
+#fce ktera odstrani stare soubory
+def delfiles():
 	if len(os.listdir('/root/files')) > 0:
 		for files in os.listdir('/root/files'):
 			os.remove('/root/files/{}'.format(files))
 
-
+#fce, ktera zjistuje zda dany proces bezi
 def getproc(name):
 	for proc in psutil.process_iter():
 		if proc.name() in name:
 			running.append(name)
 
+#fce ktera ktera krmi fci getproc procesy, ktere chceme najit
 def genproc():
 	procs = ['ansa_linux_x86_64', 'meta_post_x86_64', 'a4', 'a4_linux64.x']
 	for getp in procs:
 		getproc(getp)
 
 
-
+#fce ktera zapisuje bezici ;procesy do souboru
 def selectproc():
 	filename = '/root/files/{}-{}'.format(host, now)
 	file = open(filename, 'w')
@@ -46,7 +48,7 @@ def selectproc():
 		file.write('\n')
 
 def main():
-	checkfiles()
+	delfiles()
 	genproc()
 	selectproc()
 
