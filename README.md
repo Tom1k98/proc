@@ -1,1 +1,1 @@
-# script for listing processes on machines
+# script for listing processes
