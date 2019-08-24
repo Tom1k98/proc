@@ -10,20 +10,24 @@ def delfiles():
 			os.remove('/opt/files/{}'.format(files))
 
 def getprocs():
-    filename = '/opt/procs/procs-{}'.format(now)
-    fw = open(filename, 'w')
-    for f in os.listdir('/opt/files'):
-        ff = '/opt/files/{}'.format(f)
-        fr = open(ff, 'r')
-        for lines in fr:
-            fw.write(lines)
+	filename = '/opt/procs/procs-{}'.format(now)
+	fw = open(filename, 'w')
+	for f in os.listdir('/opt/files'):
+		ff = '/opt/files/{}'.format(f)
+		fr = open(ff, 'r')
+		for lines in fr:
+			fw.write(lines)
 
-	for lines in fw:
+def printproc():
+	filename = '/opt/procs/procs-{}'.format(now)
+	file = open(filename, 'r')
+	for lines in file:
 		print(lines)
 
 def main():
-    getprocs()
-    delfiles()
+	getprocs()
+	printproc()
+	delfiles()
 
 if __name__ == "__main__":
-    main()
+	main()
