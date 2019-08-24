@@ -1,0 +1,11 @@
+---
+- hosts: fem
+  tasks:
+  - name: "get files"
+    synchronize:
+      mode: pull
+      src: /root/files/
+      dest: /opt/files/
+
+
+  
