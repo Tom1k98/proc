@@ -10,7 +10,7 @@ tmp = datetime.now()
 now = tmp.strftime("%m%d%Y-%H%M")
 
 def gethelp():
-	if sys.argv[1] in '-h':
+	if sys.argv[1] in ("-h", "--help"):
 		print('script which collect specified processses and save them to file')
 		print('There should be script on server where files are collected')
 		sys.exit()
@@ -55,7 +55,9 @@ def selectproc():
 		file.write('\n')
 
 def main():
-	#gethelp()
+	if len(sys.argv) > 1:
+		gethelp()
+
 	delfiles()
 	genproc()
 	selectproc()
