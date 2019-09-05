@@ -40,16 +40,17 @@ def countprocs():
 			animatorp += 1
 
 #vypise pocet procesu k jednotlivym aplikacim
-def printprocs():
-	print('bezici sluzby na fem stanicich:')
-	print('ansa - {}'.format(ansap))
-	print('meta - {}'.format(metap))
-	print('animator - {}'.format(animatorp))
+def writeprocs():
+	with open('root/procstat', 'w') as file:
+		file.write('bezici sluzby na fem stanicich:')
+		file.write('ansa - {}'.format(ansap))
+		file.write('meta - {}'.format(metap))
+		file.write('animator - {}'.format(animatorp))
 
 def main():
 	getprocs()
 	countprocs()
-	printprocs()
+	writeprocs()
 	#delfiles()
 
 if __name__ == "__main__":
