@@ -29,7 +29,7 @@ def getproc(name):
 
 #fce ktera ktera krmi fci getproc procesy, ktere chceme najit
 def genproc():
-	procs = ['ansa_linux_x86_64', 'meta_post_x86_64', 'a4', 'a4_linux64.x']
+	procs = ['ansa_linux_x86_64', 'meta_post_x86_64', 'a4', 'a4_linux64.x', 'a4_linux64_fbo.x']
 	for getp in procs:
 		getproc(getp)
 
@@ -39,7 +39,7 @@ def selectproc():
 	filename = '/root/files/{}-{}'.format(host, now)
 	file = open(filename, 'w')
 
-	if ['a4', 'a4_linux64.x'] in running:
+	if 'a4' in running:
 		animator = 'animator - {}'.format(host)
 		file.write(animator)
 		file.write('\n')
