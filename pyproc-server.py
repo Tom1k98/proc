@@ -7,11 +7,6 @@ animatorp = 0
 tmp = datetime.now()
 now = tmp.strftime("%m%d%Y-%H%M")
 
-#fce ktera odstrani stare soubory s procesy ze stanic
-def delfiles():
-	if len(os.listdir('/opt/files')) > 0:
-		for files in os.listdir('/opt/files'):
-			os.remove('/opt/files/{}'.format(files))
 
 #fce ktera vytahne procesy ze vsech souboru a zapise je do jednoho
 def getprocs():
@@ -41,17 +36,16 @@ def countprocs():
 
 #vypise pocet procesu k jednotlivym aplikacim
 def writeprocs():
-	with open('root/procstat', 'w') as file:
-		file.write('bezici sluzby na fem stanicich:')
-		file.write('ansa - {}'.format(ansap))
-		file.write('meta - {}'.format(metap))
-		file.write('animator - {}'.format(animatorp))
+	with open('/www/procstat', 'w') as file:
+		file.write('ansa - {}\n'.format(ansap))
+		file.write('meta - {}\n'.format(metap))
+		file.write('animator - {}\n'.format(animatorp))
 
 def main():
 	getprocs()
 	countprocs()
 	writeprocs()
-	#delfiles()
+
 
 if __name__ == "__main__":
 	main()

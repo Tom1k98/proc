@@ -3,6 +3,9 @@
         <title>Tom test</title>
     </head>
     <body>
-        {{ text }}
+      <p><h2>Bezici sluzby:</h2></p>
+      {% for line in lines %}
+     {{line}}<br>
+{% endfor %}
     </body>
 </html>
