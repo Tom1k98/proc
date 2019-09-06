@@ -7,6 +7,11 @@ animatorp = 0
 tmp = datetime.now()
 now = tmp.strftime("%m%d%Y-%H%M")
 
+#smaze info o starych informacich
+def delfiles():
+	if len(os.listdir('/www')) > 0:
+		for files in os.listdir('/www'):
+			os.remove('/www/{}'.format(files))
 
 #fce ktera vytahne procesy ze vsech souboru a zapise je do jednoho
 def getprocs():
@@ -44,6 +49,7 @@ def writeprocs():
 def main():
 	getprocs()
 	countprocs()
+	delfiles()
 	writeprocs()
 
 
