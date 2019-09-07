@@ -9,6 +9,6 @@ ssh to 192.168.3.90
 ```
 ssh username@192.168.3.90
 ```
-In my home directory you will find two shell scripts:\
+In my home directory you will find two shell scripts:
 - `make.sh` - this script is in crontab and runs every 5 minutes. Executes everything for webpage refresh\
 - `newclient.sh` - copy new client to all machines\
