@@ -59,11 +59,11 @@ def writetocsv():
 
 def checkcsv():
 	with open('/www/data.csv', 'r') as csv_check:
-		next(csv_check)
 		check = csv.reader(csv_check, delimiter=',')
+		next(csv_check)
 		for line in check:
-			if nowh not in line[0]:
-				writetocsv()
+			if nowh in line[0]:
+				sys.exit()
 
 
 def main():
@@ -72,6 +72,7 @@ def main():
 	delfiles()
 	writeprocs()
 	checkcsv()
+	writetocsv()
 
 
 if __name__ == "__main__":
